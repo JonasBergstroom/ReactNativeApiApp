@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "FetchApiApp",
+    "slug": "FetchApiApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "FetchApiApp"
+}

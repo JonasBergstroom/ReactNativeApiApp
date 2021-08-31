@@ -1,26 +1,46 @@
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import ListItems from './components/ListItems';
 
-function HomeScreen() {
+export default function App() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
+    <View style={styles.container}>
+      <View style={styles.titleWrapper}>
+      <Text style={styles.largeTitle}>Markets</Text>
+      </View>
+      <View style={styles.divider} />
+      <ListItems />
     </View>
   );
 }
 
-const Stack = createNativeStackNavigator();
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+  titleWrapper: {
+    marginTop: 80,
+    paddingHorizontal: 16,
+  },
 
-export default App;
+
+  largeTitle: {
+    fontSize: 24,
+    fontWeight: "bold"
+
+  },
+
+  divider: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: 'grey',
+    marginHorizontal: 16,
+    marginTop: 16,
+
+
+  }
+
+});
+

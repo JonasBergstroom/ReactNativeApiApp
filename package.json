@@ -6,6 +6,19 @@
     "web": "expo start --web",
     "start": "react-native start"
   },
+  "scripts": {
+    "android": "react-native run android",
+    "ios": "react-native run ios",
+    "web": "expo start --web",
+    "start": "react-native start",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
+    ]
+  },
   "dependencies": {
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
@@ -25,7 +38,10 @@
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0"
+    "@babel/core": "^7.9.0",
+    "@testing-library/react-native": "^7.2.0",
+    "jest": "^27.1.0",
+    "react-test-renderer": "^17.0.2"
   },
   "private": true
 }

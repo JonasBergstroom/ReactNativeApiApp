@@ -32,11 +32,42 @@ const ListItems = () => {
 
 const styles = StyleSheet.create({
 
-    LeftWrapper: {},
-    titleWrapper: {},
-    title: {},
-    subtitle: {},
-    RightWrapper: {},
+    itemWrapper: {
+        paddingHorizontal: 16,
+        marginTop: 24,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+
+    },
+
+    LeftWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+
+
+    },
+    image: {
+        height: 48,
+        width: 48,
+        backgroundColor: "grey",
+    },
+    titleWrapper: {
+        marginLeft: 8,
+
+    },
+    title: {
+        fontSize: 18,
+    },
+    subtitle: {
+        marginTop: 4,
+        fontSize: 14,
+        color: "grey",
+    },
+    RightWrapper: {
+        alignItems: "flex-end",
+    },
+
 
 })
 

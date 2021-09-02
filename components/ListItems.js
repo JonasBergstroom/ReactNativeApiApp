@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native'
 
-const ListItems = () => {
+const ListItems = ({name, symbol ,currentPrice, priceChangePercentage7d, logoUrl }) => {
     return (
         <TouchableOpacity>
             <View style={styles.itemWrapper}>
@@ -9,19 +9,19 @@ const ListItems = () => {
             {/* Left side View */}
 
             <View style={styles.LeftWrapper}>
-                <Image source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Ethereum-icon-purple.svg" }} style={styles.image}/>
+                <Image source={{ uri: logoUrl}} style={styles.image}/>
             {/* Title */}
             <View style={styles.titleWrapper}>
-                <Text style={styles.title}>Ethereum</Text>
-                <Text style={styles.subtitle}>ETH</Text>
+                <Text style={styles.title}>{name}</Text>
+                <Text style={styles.subtitle}>{symbol}</Text>
             </View>
             </View>
 
             {/* Right side View */}
 
             <View style={styles.RightWrapper}>
-                <Text style={styles.title}>Ethereum</Text>
-                <Text style={[styles.subtitle, {color: 'red'}]}>ETH</Text>
+                <Text style={styles.title}>{currentPrice}</Text>
+                <Text style={[styles.subtitle, {color: 'red'}]}>{priceChangePercentage7d}</Text>
             </View>
 
 
@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
     image: {
         height: 48,
         width: 48,
-        backgroundColor: "grey",
     },
     titleWrapper: {
         marginLeft: 8,

@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import ListItems from './components/ListItems';
+import {SAMPLE_DATA} from './components/data/sampleData';
 
 export default function App() {
   return (
@@ -10,7 +11,12 @@ export default function App() {
       <Text style={styles.largeTitle}>Markets</Text>
       </View>
       <View style={styles.divider} />
-      <ListItems />
+      <ListItems 
+      name={SAMPLE_DATA[0].name}
+      symbol={SAMPLE_DATA[0].symbol}
+      currentPrice={SAMPLE_DATA[0].current_price}
+      priceChangePercentage7d={SAMPLE_DATA[0].price_change_percentage_7d_in_currency}
+      logoUrl={SAMPLE_DATA[0].image} />
     </View>
   );
 }

@@ -1,28 +1,30 @@
 import React from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from 'react-native'
 
-const ListItems = ({name, symbol ,currentPrice, priceChangePercentage7d, logoUrl }) => {
+const ListItems = ({ name, symbol, currentPrice, priceChangePercentage7d, logoUrl }) => {
+
+    const priceChangeColour = priceChangePercentage7d > 0 ? "green" : "red";
     return (
         <TouchableOpacity>
             <View style={styles.itemWrapper}>
 
-            {/* Left side View */}
+                {/* Left side View */}
 
-            <View style={styles.LeftWrapper}>
-                <Image source={{ uri: logoUrl}} style={styles.image}/>
-            {/* Title */}
-            <View style={styles.titleWrapper}>
-                <Text style={styles.title}>{name}</Text>
-                <Text style={styles.subtitle}>{symbol}</Text>
-            </View>
-            </View>
+                <View style={styles.LeftWrapper}>
+                    <Image source={{ uri: logoUrl }} style={styles.image} />
+                    {/* Title */}
+                    <View style={styles.titleWrapper}>
+                        <Text style={styles.title}>{name}</Text>
+                        <Text style={styles.subtitle}>{symbol.toUpperCase()}</Text>
+                    </View>
+                </View>
 
-            {/* Right side View */}
+                {/* Right side View */}
 
-            <View style={styles.RightWrapper}>
-                <Text style={styles.title}>{currentPrice}</Text>
-                <Text style={[styles.subtitle, {color: 'red'}]}>{priceChangePercentage7d}</Text>
-            </View>
+                <View style={styles.RightWrapper}>
+                    <Text style={styles.title}>${currentPrice.toLocaleString('en-US', { currency: 'USD' })}</Text>
+                    <Text style={[styles.subtitle, { color: priceChangeColour }]}>{priceChangePercentage7d.toFixed(2)}%</Text>
+                </View>
 
 
             </View>

@@ -1,13 +1,36 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, Dimensions } from 'react-native'
+import {ChartDot, ChartPath, ChartPathProvider, ChartYLabel} from '@rainbow-me/animated-charts';
+
+export const {width: SIZE} = Dimensions.get('window');
+
+
+ 
+
 
 const Chart = ({ currentPrice, logoUrl, name, priceChangePercentage7d, sparkline, symbol }) => {
     const priceChangeColour = priceChangePercentage7d > 0 ? "green" : "red";
 
 
-    return (
-        <View styel={styles.chartWrapper}>
+    const formatUSD = value => {
 
+        'worklet';
+        if (value === '') {
+            return `$${currentPrice.toLocaleString('en-US', { currency: 'USD' })}`;
+        }
+
+        const formattedValue =`$${parseFloat(value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`
+
+        return formattedValue;
+
+
+    };
+
+
+    return (
+
+        <ChartPathProvider data={{ points: sparkline, smoothingStrategy: 'bezier' }}>
+        <View styel={styles.chartWrapper}>
 
             {/* Titles */}
 
@@ -22,28 +45,37 @@ const Chart = ({ currentPrice, logoUrl, name, priceChangePercentage7d, sparkline
                 </View>
 
                 <View style={styles.lowerTitle}>
-                    <Text style={styles.boldTitle}>${currentPrice.toLocaleString('en-US', { currency: 'USD' })}</Text>
+                <ChartYLabel
+                          format={formatUSD}
+                          style={styles.boldTitle}
+            />
+                  { /* <Text style={styles.boldTitle}>${currentPrice.toLocaleString('en-US', { currency: 'USD' })}</Text> */ }
                     <Text style={[styles.title, {color: priceChangeColour}]}>{priceChangePercentage7d.toFixed(2)}</Text>
-
-
-
                 </View>
             </View>
+
+            <View style={styles.chartLineWrapper}>
+
+            <ChartPath height={SIZE / 2} stroke='black' width={SIZE} />
+            <ChartDot style={{ backgroundColor: 'blue' }} />   
+
+            </View>
+
         </View>
+        </ChartPathProvider>
     )
 }
 
 const styles = StyleSheet.create({
 
     chartWrapper: {
-        margin: 16,
+    marginVertical: 16,
 
 
     },
     titlesWrapper: {
 
-
-
+    marginHorizontal: 16
 
     },
     
@@ -93,6 +125,11 @@ const styles = StyleSheet.create({
     title: {
 
     fontSize: 18,
+    },
+
+    chartWrapper: {
+
+        marginTop: 40,
     },
 
 });

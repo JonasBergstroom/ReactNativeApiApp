@@ -2,10 +2,7 @@ import { FlatList, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import React, {useRef, useMemo, useState} from 'react';
 import ListItems from './components/ListItems';
 import Chart from './components/Chart';
-import {
-  BottomSheetModal,
-  BottomSheetModalProvider,
-} from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetModalProvider,} from '@gorhom/bottom-sheet';
 
 import { SAMPLE_DATA } from './components/data/sampleData';
 
@@ -26,14 +23,11 @@ const ListHeader = () => (
 
 export default function App() {
 
-  const [selectedCoinData, setSelectedCoinData] = useState(0);
+  const [selectedCoinData, setSelectedCoinData] = useState(null);
 
-
-// ref
   const bottomSheetModalRef = useRef(null);
 
-  // variables
-  const snapPoints = useMemo(() => ['50%'], []);
+  const snapPoints = useMemo(() => ['35%'], []);
 
   const openModal = (item) => {
     setSelectedCoinData(item);

@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from 'react-native'
 
-const ListItems = ({ name, symbol, currentPrice, priceChangePercentage7d, logoUrl }) => {
+const ListItems = ({ name, symbol, currentPrice, priceChangePercentage7d, logoUrl, onPress }) => {
 
     const priceChangeColour = priceChangePercentage7d > 0 ? "green" : "red";
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPress}>
             <View style={styles.itemWrapper}>
 
                 {/* Left side View */}

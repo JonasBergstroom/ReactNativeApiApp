@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { FlatList, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import React, {useRef, useMemo} from 'react';
 import ListItems from './components/ListItems';
@@ -28,11 +27,17 @@ export default function App() {
 
 
 // ref
-  const bottomSheetModalRef = useRef(null);
+const bottomSheetModalRef = useRef(null);
 
   // variables
   const snapPoints = useMemo(() => ['50%'], []);
 
+  const openModal = () => {
+    bottomSheetModalRef.current.present();
+
+
+  }
+ 
 
   return (
 
@@ -53,6 +58,7 @@ export default function App() {
               currentPrice={item.current_price}
               priceChangePercentage7d={item.price_change_percentage_7d_in_currency}
               logoUrl={item.image}
+              onPress={() => openModal()}
 
             />
           )}
@@ -61,14 +67,16 @@ export default function App() {
 
       </SafeAreaView>
 
-      <BottomSheetModal>
+      <BottomSheetModal
 
         ref={bottomSheetModalRef}
         index={0}
         snapPoints={snapPoints}
 
+        >
+
         <View style={styles.contentContainer}>
-          <Text>Awesome 🎉</Text>
+          <Text>This is the Sheet Modal View</Text>
         </View>
 
 

@@ -25,8 +25,6 @@ const ListItems = ({ name, symbol, currentPrice, priceChangePercentage7d, logoUr
                     <Text style={styles.title}>${currentPrice.toLocaleString('en-US', { currency: 'USD' })}</Text>
                     <Text style={[styles.subtitle, { color: priceChangeColour }]}>{priceChangePercentage7d.toFixed(2)}%</Text>
                 </View>
-
-
             </View>
         </TouchableOpacity>
     )
@@ -73,3 +71,4 @@ const styles = StyleSheet.create({
 })
 
 export default ListItems
+
